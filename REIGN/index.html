@@ -1,0 +1,903 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>I Love You Girlypop Reign Parani 💛</title>
+
+    <!-- ICON LIBRARY -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+
+            background-image: url("images/baby.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            color: white;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.20);
+            z-index: -1;
+        }
+
+        /* =========================
+           NAVIGATION BAR
+        ========================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+
+            padding: 15px;
+
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+
+            z-index: 100;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 10px 20px;
+
+            border-radius: 30px;
+
+            color: white;
+            text-decoration: none;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn i {
+            color: #ffcc00;
+            font-size: 20px;
+        }
+
+        .nav-btn:hover {
+            background: #ffcc00;
+            color: black;
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 15px #fff000,
+                0 0 30px #ff9800;
+        }
+
+        .nav-btn:hover i {
+            color: black;
+        }
+
+        /* =========================
+           HOME
+        ========================= */
+
+        #home {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 20;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 55px;
+
+            text-shadow:
+                0 0 20px #ffcc00,
+                0 0 30px #ff9800;
+
+            animation: heartbeat 1.5s infinite;
+        }
+
+        h2 {
+            margin-top: 15px;
+            font-size: 50px;
+
+            text-shadow:
+                0 0 20px #ff9800;
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+
+            text-shadow: 0 0 10px #000;
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        button {
+            margin-top: 25px;
+
+            padding: 15px 30px;
+
+            border: none;
+            border-radius: 30px;
+
+            background: #ffcc00;
+            color: white;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.15);
+            background: #ff9800;
+
+            box-shadow:
+                0 0 20px #fff000,
+                0 0 40px #ff9800;
+        }
+
+        /* =========================
+           HIDDEN MESSAGE
+        ========================= */
+
+        #message {
+            display: none;
+
+            margin-top: 20px;
+
+            font-size: 25px;
+            font-weight: bold;
+
+            text-shadow:
+                0 0 10px #fff000,
+                0 0 20px #ff9800;
+
+            animation: appear 2s ease;
+        }
+
+        /* =========================
+           FLOATING PICTURES
+        ========================= */
+
+        .photo {
+            position: absolute;
+
+            width: 130px;
+            height: 130px;
+
+            object-fit: cover;
+            border-radius: 50%;
+
+            border: 6px solid #fff;
+
+            box-shadow:
+                0 0 15px #fff000,
+                0 0 30px #ff9800;
+
+            animation: floating 8s infinite ease-in-out;
+
+            z-index: 5;
+        }
+
+        .photo1 {
+            left: 5%;
+            top: 15%;
+        }
+
+        .photo2 {
+            right: 7%;
+            top: 20%;
+            animation-delay: 1s;
+        }
+
+        .photo3 {
+            left: 12%;
+            bottom: 10%;
+            animation-delay: 1s;
+        }
+
+        .photo4 {
+            right: 12%;
+            bottom: 12%;
+            animation-delay: 1s;
+        }
+
+        /* =========================
+           PICTURES SECTION
+           HIDDEN AT FIRST
+        ========================= */
+
+        #pictures {
+            display: none;
+
+            min-height: 100vh;
+
+            padding: 120px 20px 80px;
+
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 45px;
+            margin-bottom: 40px;
+
+            text-shadow:
+                0 0 20px #ffcc00,
+                0 0 30px #ff9800;
+        }
+
+        .gallery {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 200px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+            border: 5px solid white;
+
+            box-shadow:
+                0 0 15px #fff000,
+                0 0 30px #ff9800;
+
+            transition: 0.4s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.12) rotate(3deg);
+
+            box-shadow:
+                0 0 30px #fff000,
+                0 0 60px #ff9800;
+        }
+
+        /* =========================
+           SOCIAL SECTION
+           HIDDEN AT FIRST
+        ========================= */
+
+        #socials {
+            display: none;
+
+            min-height: 100vh;
+
+            padding: 120px 20px;
+
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .social-container {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 25px;
+        }
+
+        .social {
+            width: 180px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            color: white;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 0 15px #ffcc00;
+        }
+
+        .social i {
+            font-size: 45px;
+
+            color: #ffcc00;
+
+            margin-bottom: 12px;
+        }
+
+        .social h3 {
+            font-size: 20px;
+        }
+
+        .social p {
+            font-size: 14px;
+        }
+
+        .social:hover {
+            transform: translateY(-10px) scale(1.05);
+
+            background: #ffcc00;
+
+            color: black;
+
+            box-shadow:
+                0 0 25px #fff000,
+                0 0 50px #ff9800;
+        }
+
+        .social:hover i {
+            color: black;
+        }
+
+        /* =========================
+           MANY YELLOW HEARTS
+        ========================= */
+
+        .heart {
+            position: fixed;
+
+            bottom: -60px;
+
+            font-size: 35px;
+
+            color: yellow;
+
+            text-shadow:
+                0 0 10px #fff000,
+                0 0 20px #ffcc00;
+
+            animation: heartFloat 6s linear infinite;
+
+            z-index: 15;
+
+            pointer-events: none;
+        }
+
+        .heart1 {
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .heart2 {
+            left: 12%;
+            animation-delay: 2s;
+        }
+
+        .heart3 {
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .heart4 {
+            left: 28%;
+            animation-delay: 1s;
+        }
+
+        .heart5 {
+            left: 36%;
+            animation-delay: 3s;
+        }
+
+        .heart6 {
+            left: 44%;
+            animation-delay: 5s;
+        }
+
+        .heart7 {
+            left: 52%;
+            animation-delay: 2s;
+        }
+
+        .heart8 {
+            left: 60%;
+            animation-delay: 4s;
+        }
+
+        .heart9 {
+            left: 68%;
+            animation-delay: 1s;
+        }
+
+        .heart10 {
+            left: 76%;
+            animation-delay: 3s;
+        }
+
+        .heart11 {
+            left: 84%;
+            animation-delay: 0s;
+        }
+
+        .heart12 {
+            left: 92%;
+            animation-delay: 5s;
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes heartFloat {
+
+            0% {
+                transform:
+                    translateY(0)
+                    scale(0.5)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            50% {
+                transform:
+                    translateY(-50vh)
+                    scale(1.2)
+                    rotate(20deg);
+            }
+
+            100% {
+                transform:
+                    translateY(-110vh)
+                    scale(1.5)
+                    rotate(-20deg);
+
+                opacity: 0;
+            }
+        }
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform:
+                    translateY(0)
+                    rotate(-5deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-40px)
+                    rotate(5deg);
+            }
+        }
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                gap: 5px;
+                padding: 10px;
+            }
+
+            .nav-btn {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+
+            .nav-btn i {
+                font-size: 16px;
+            }
+
+            h1 {
+                font-size: 35px;
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+
+            .photo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .gallery img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav class="navbar">
+
+        <a href="#home" class="nav-btn">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+
+        <a href="#pictures" class="nav-btn">
+            <i class="fas fa-images"></i>
+            Pictures
+        </a>
+
+        <a href="#socials" class="nav-btn">
+            <i class="fas fa-share-nodes"></i>
+            Social
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         HOME
+    ========================= -->
+
+    <section id="home">
+
+        <!-- FLOATING PICTURES -->
+
+        <img src="images/reign2.jpeg"
+             class="photo photo1"
+             alt="Reign">
+
+        <img src="images/babyatashaaaa.jpg"
+             class="photo photo2"
+             alt="Reign">
+
+        <img src="images/babyrei.jpg"
+             class="photo photo3"
+             alt="Reign">
+
+        <img src="images/reign1.jpg.jpeg"
+             class="photo photo4"
+             alt="Reign">
+
+         
+            
+           
+
+
+        <!-- HEARTS -->
+
+        <div class="heart heart1">💛</div>
+        <div class="heart heart2">💛</div>
+        <div class="heart heart3">💛</div>
+        <div class="heart heart4">💛</div>
+        <div class="heart heart5">💛</div>
+        <div class="heart heart6">💛</div>
+        <div class="heart heart7">💛</div>
+        <div class="heart heart8">💛</div>
+        <div class="heart heart9">💛</div>
+        <div class="heart heart10">💛</div>
+        <div class="heart heart11">💛</div>
+        <div class="heart heart12">💛</div>
+
+
+        <!-- MAIN CONTENT -->
+
+        <div class="container">
+
+            <h1>
+                💛 TEAM REIGN OFFICIAL 💛
+            </h1>
+
+            <h2>
+                Atasha Reign Parani ✨
+            </h2>
+
+            <p>
+                LAGING KAKAYANIN 💛
+            </p>
+
+            <button onclick="showLove()">
+                CLICK ME 💛
+            </button>
+
+            <div id="message">
+
+                💛 WE LOVE YOU REIGN PARANI! 💛
+
+                <br>
+
+                🥰✨💛✨🥰
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PICTURES
+    ========================= -->
+
+    <section id="pictures">
+
+        <h2 class="section-title">
+
+            <i class="fas fa-images"></i>
+
+            REIGN'S PICTURES 💛
+
+        </h2>
+
+        <div class="gallery">
+
+            <img src="images/reign2.jpeg" alt="Reign">
+
+            <img src="images/babyatashaaaa.jpg" alt="Reign">
+
+            <img src="images/babyrei.jpg" alt="Reign">
+
+            <img src="images/reign1.jpg.jpeg" alt="Reign">
+
+            <img src="images/mybaby.jpeg" alt="Reign">
+
+            <img src="images/love.jpeg" alt="Reign">
+
+             <img src="images/baby.jpg" alt="Reign">
+
+            <img src="images/shangg.jpeg" alt="Reign">  
+
+             <img src="images/reign4.jpg" alt="Reign">
+            
+              <img src="images/rei.jpeg" alt="Reign">
+
+            
+
+
+              
+
+
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SOCIALS
+    ========================= -->
+
+    <section id="socials">
+
+        <h2 class="section-title">
+
+            <i class="fas fa-share-nodes"></i>
+
+            REIGN'S SOCIALS 💛
+
+        </h2>
+
+        <div class="social-container">
+
+            <!-- FACEBOOK -->
+
+            <a href="https://www.facebook.com/share/1EuK9TVc2X/?mibextid=wwXIfr"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social">
+
+                <i class="fab fa-facebook"></i>
+
+                <h3>
+                    Facebook
+                </h3>
+
+                <p>
+                    Click to visit Facebook 💙
+                </p>
+
+            </a>
+
+
+            <!-- INSTAGRAM -->
+
+            <a href="https://www.instagram.com/reignparani_?stkn=MTZwNzMwOHhyNzVhcw=="
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social">
+
+                <i class="fab fa-instagram"></i>
+
+                <h3>
+                    Instagram
+                </h3>
+
+                <p>
+                    Click to visit Instagram 💗
+                </p>
+
+            </a>
+
+
+            <!-- TIKTOK -->
+
+            <a href="https://www.tiktok.com/@reignparani_?_r=1&_t=ZS-9A6sRqb63lw"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social">
+
+                <i class="fab fa-tiktok"></i>
+
+                <h3>
+                    TikTok
+                </h3>
+
+                <p>
+                    Click to visit TikTok 🖤
+                </p>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function showLove() {
+
+            /* SHOW MESSAGE */
+
+            document.getElementById("message").style.display = "block";
+
+
+            /* SHOW PICTURES */
+
+            const pictures = document.getElementById("pictures");
+
+            pictures.style.display = "flex";
+
+
+            /* SHOW SOCIALS */
+
+            const socials = document.getElementById("socials");
+
+            socials.style.display = "flex";
+
+
+            /* CREATE 30 EXTRA HEARTS */
+
+            for (let i = 0; i < 30; i++) {
+
+                const heart = document.createElement("div");
+
+                heart.innerHTML = "💛";
+
+                heart.classList.add("heart");
+
+                heart.style.left =
+                    Math.random() * 100 + "vw";
+
+                heart.style.bottom =
+                    "-60px";
+
+                heart.style.fontSize =
+                    (20 + Math.random() * 35) + "px";
+
+                heart.style.animationDuration =
+                    (3 + Math.random() * 4) + "s";
+
+                heart.style.animationDelay =
+                    Math.random() * 2 + "s";
+
+                document.body.appendChild(heart);
+
+
+                /* REMOVE AFTER ANIMATION */
+
+                setTimeout(function() {
+                    heart.remove();
+                }, 7000);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+
